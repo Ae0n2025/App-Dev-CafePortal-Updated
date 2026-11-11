@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Portal - Staff Workspace</title>
+    <!-- Student Note: Loading Google Fonts and Lucide icons for UI rendering -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="StaffPage.css">
+</head>
+<body>
+
+    <!-- Student Comment: Persistent Staff Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="nav-brand">
+            <div class="logo-box">
+                <i data-lucide="coffee"></i>
+            </div>
+            <div class="brand-text">
+                <span class="brand-title">Café Portal</span>
+                <span class="brand-subtitle">STI GLOBAL CITY</span>
+            </div>
+        </div>
+
+        <div class="nav-user-actions">
+            <div class="user-profile-badge">
+                <span class="user-name">Maria Santos</span>
+                <span class="user-role">Café staff</span>
+            </div>
+            <button class="btn-logout" title="Sign out">
+                <i data-lucide="log-out"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Student Comment: Main Staff Workspace Layout -->
+    <div class="app-container">
+        
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="sidebar">
+            <!-- Active Staff Profile Badge -->
+            <div class="staff-card">
+                <div class="staff-card-top">
+                    <div class="avatar-circle">MS</div>
+                    <div class="staff-info">
+                        <h4>Maria Santos</h4>
+                        <p>Canteen Staff • STF-2048</p>
+                    </div>
+                </div>
+                <div class="shift-status">
+                    <span class="status-dot"></span> Currently on shift
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation Links with Counters -->
+            <nav class="sidebar-nav">
+                <button class="nav-link active" data-view="viewOverview">
+                    <i data-lucide="layout-grid"></i> Overview
+                </button>
+                <button class="nav-link" data-view="viewOrders">
+                    <i data-lucide="file-text"></i> Orders
+                    <span class="badge-count yellow">2</span>
+                </button>
+                <button class="nav-link" data-view="viewMenu">
+                    <i data-lucide="utensils"></i> Menu
+                    <span class="badge-count yellow">3</span>
+                </button>
+                <button class="nav-link" data-view="viewProfileSettings">
+                    <i data-lucide="user"></i> Profile Settings
+                </button>
+            </nav>
+
+            <button class="sidebar-logout">
+                <i data-lucide="log-out"></i> Log out
+            </button>
+        </aside>
+
+        <!-- DYNAMIC WORKSPACE MAIN CONTAINER -->
+        <main class="main-content">
+
+            <!-- ================= VIEW 1: SALES DASHBOARD (OVERVIEW) ================= -->
+            <section id="viewOverview" class="content-view active">
+                <div class="view-header-row">
+                    <div>
+                        <span class="section-tag">STAFF OVERVIEW</span>
+                        <h1 class="view-title">Sales dashboard</h1>
+                        <p class="view-subtext">Wednesday, September 15 • Live data</p>
+                    </div>
+                    <div class="segmented-control">
+                        <button class="tab-btn active">This week</button>
+                        <button class="tab-btn">This month</button>
+                    </div>
+                </div>
+
+                <!-- Metric Summary Cards -->
+                <div class="metrics-grid">
+                    <!-- Metric 1 -->
+                    <div class="metric-card">
+                        <div class="metric-content">
+                            <span class="metric-label">Items sold today</span>
+                            <h2 class="metric-value">84</h2>
+                            <span class="metric-trend"><i data-lucide="arrow-up-right"></i> 12.5% from yesterday</span>
+                        </div>
+                        <div class="metric-icon"><i data-lucide="file-text"></i></div>
+                    </div>
+
+                    <!-- Metric 2 -->
+                    <div class="metric-card">
+                        <div class="metric-content">
+                            <span class="metric-label">Monthly items sold</span>
+                            <h2 class="metric-value">2,184</h2>
+                            <span class="metric-trend"><i data-lucide="arrow-up-right"></i> 8.2% from last month</span>
+                        </div>
+                        <div class="metric-icon"><i data-lucide="calendar"></i></div>
+                    </div>
+
+                    <!-- Metric 3 (Dark Featured Card) -->
+                    <div class="metric-card dark-card">
+                        <div class="metric-content">
+                            <span class="metric-label">Revenue this month</span>
+                            <h2 class="metric-value">₱286,420</h2>
+                            <span class="metric-trend"><i data-lucide="arrow-up-right"></i> 10.4% from last month</span>
+                        </div>
+                        <div class="metric-icon"><i data-lucide="peso-sign">₱</i></div>
+                    </div>
+
+                    <!-- Metric 4 -->
+                    <div class="metric-card">
+                        <div class="metric-content">
+                            <span class="metric-label">Average order value</span>
+                            <h2 class="metric-value">₱131.15</h2>
+                            <span class="metric-trend"><i data-lucide="arrow-up-right"></i> ₱4.20 this month</span>
+                        </div>
+                        <div class="metric-icon"><i data-lucide="trending-up"></i></div>
+                    </div>
+                </div>
+
+                <!-- Analytics Charts Row -->
+                <div class="charts-row">
+                    <!-- Daily items sold Line Chart Card -->
+                    <div class="chart-card flex-2">
+                        <div class="chart-header">
+                            <div>
+                                <h3>Daily items sold</h3>
+                                <p>Orders completed over the last 7 days</p>
+                            </div>
+                            <span class="pill-green">+16.7%</span>
+                        </div>
+
+                        <!-- SVG Line Chart Mock -->
+                        <div class="svg-chart-container">
+                            <svg viewBox="0 0 500 150" class="line-chart-svg">
+                                <defs>
+                                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#0b3b2c" stop-opacity="0.2"/>
+                                        <stop offset="100%" stop-color="#0b3b2c" stop-opacity="0.0"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M 40,110 L 110,95 L 180,105 L 250,80 L 320,90 L 390,60 L 460,70 L 460,140 L 40,140 Z" fill="url(#chartGrad)" />
+                                <path d="M 40,110 L 110,95 L 180,105 L 250,80 L 320,90 L 390,60 L 460,70" fill="none" stroke="#0b3b2c" stroke-width="3" />
+                                <circle cx="40" cy="110" r="5" fill="#ffffff" stroke="#0b3b2c" stroke-width="3"/>
+                                <circle cx="110" cy="95" r="5" fill="#ffffff" stroke="#0b3b2c" stroke-width="3"/>
+                                <circle cx="180" cy="105" r="5" fill="#ffffff" stroke="#0b3b2c" stroke-width="3"/>
+                                <circle cx="250" cy="80" r="5" fill="#ffffff" stroke="#0b3b2c" stroke-width="3"/>
+                                <circle cx="320" cy="90" r="5" fill="#ffffff" stroke="#0b3b2c" stroke-width="3"/>
+                                <circle cx="390" cy="60" r="5" fill="#ffffff" stroke="#0b3b2c" stroke-width="3"/>
+                                <circle cx="460" cy="70" r="5" fill="#ffffff" stroke="#0b3b2c" stroke-width="3"/>
+                            </svg>
+                            <div class="chart-x-axis">
+                                <span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Daily Revenue Bar Chart Card -->
+                    <div class="chart-card flex-1">
+                        <div class="chart-header">
+                            <div>
+                                <h3>Daily revenue</h3>
+                                <p>Revenue earned over the last 7 days</p>
+                            </div>
+                            <span class="pill-gold">₱54,600</span>
+                        </div>
+
+                        <!-- Bar Chart Mock -->
+                        <div class="bar-chart-container">
+                            <div class="bar-group"><div class="bar" style="height: 45%;"></div><span>Thu</span></div>
+                            <div class="bar-group"><div class="bar" style="height: 55%;"></div><span>Fri</span></div>
+                            <div class="bar-group"><div class="bar" style="height: 40%;"></div><span>Sat</span></div>
+                            <div class="bar-group"><div class="bar" style="height: 70%;"></div><span>Sun</span></div>
+                            <div class="bar-group"><div class="bar" style="height: 60%;"></div><span>Mon</span></div>
+                            <div class="bar-group"><div class="bar" style="height: 85%;"></div><span>Tue</span></div>
+                            <div class="bar-group"><div class="bar gold-bar" style="height: 80%;"></div><span>Wed</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Most Ordered Product Banner -->
+                <div class="top-product-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300" alt="Chicken Teriyaki Bowl">
+                    <div class="top-product-info">
+                        <span class="section-tag">MOST ORDERED THIS MONTH</span>
+                        <h3>Chicken Teriyaki Bowl</h3>
+                        <p>128 accepted items • Updates when staff accepts an order</p>
+                    </div>
+                    <span class="rank-badge"><i data-lucide="star"></i> #1</span>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 2: ORDERS WORKSPACE ================= -->
+            <section id="viewOrders" class="content-view">
+                <div class="view-header-row">
+                    <div>
+                        <span class="section-tag">ORDER WORKSPACE</span>
+                        <h1 class="view-title">Orders</h1>
+                        <p class="view-subtext">Manage the live queue or verify today's previous orders.</p>
+                    </div>
+                    <div class="segmented-control">
+                        <button class="tab-btn active">Manage Orders <span class="badge-count-sm">2</span></button>
+                        <button class="tab-btn">Today's History <span class="badge-count-sm gray">4</span></button>
+                    </div>
+                </div>
+
+                <div class="sub-header-row">
+                    <div>
+                        <span class="section-tag">LIVE QUEUE</span>
+                        <h2 class="sub-title">Manage orders</h2>
+                    </div>
+                    <span class="active-count-pill">2 active</span>
+                </div>
+
+                <!-- Orders Queue Grid -->
+                <div class="orders-queue-grid">
+                    <!-- Order Card 1: Pending -->
+                    <div class="queue-card">
+                        <div class="queue-card-header">
+                            <div>
+                                <span class="order-meta">CP-1048 • 10:42 AM</span>
+                                <h3>Jamie Cruz</h3>
+                                <p class="payment-method">Payment: GCash</p>
+                            </div>
+                            <span class="status-pill status-pending">PENDING</span>
+                        </div>
+                        <div class="queue-items-list">
+                            <div class="item-line"><span>2× Chicken Teriyaki Bowl</span><strong>₱290</strong></div>
+                            <div class="item-line"><span>1× Caramel Iced Latte</span><strong>₱95</strong></div>
+                        </div>
+                        <div class="queue-card-footer">
+                            <h3 class="total-price">₱385</h3>
+                            <div class="btn-action-group">
+                                <button class="btn-outline-danger">Cancel</button>
+                                <button class="btn-solid-dark">Accept order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Card 2: Preparing -->
+                    <div class="queue-card">
+                        <div class="queue-card-header">
+                            <div>
+                                <span class="order-meta">CP-1047 • 10:36 AM</span>
+                                <h3>Sam Reyes</h3>
+                                <p class="payment-method">Payment: Cash</p>
+                            </div>
+                            <span class="status-pill status-preparing">PREPARING</span>
+                        </div>
+                        <div class="queue-items-list">
+                            <div class="item-line"><span>2× Chocolate Croissant</span><strong>₱150</strong></div>
+                        </div>
+                        <div class="queue-card-footer">
+                            <h3 class="total-price">₱150</h3>
+                            <div class="btn-action-group">
+                                <button class="btn-outline-danger">Cancel</button>
+                                <button class="btn-solid-dark">Ready for pickup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 3: MENU MANAGEMENT ================= -->
+            <section id="viewMenu" class="content-view">
+                <div class="view-header-row">
+                    <div>
+                        <span class="section-tag">CATALOG</span>
+                        <h1 class="view-title">Menu management</h1>
+                        <p class="view-subtext">Changes appear in the customer menu immediately.</p>
+                    </div>
+                    <button class="btn-solid-dark" id="btnOpenAddModal"><i data-lucide="plus"></i> Add new item</button>
+                </div>
+
+                <!-- Food Categories Header Bar -->
+                <div class="categories-bar-card">
+                    <div>
+                        <span class="category-label">Food categories</span>
+                        <div class="category-pills-row">
+                            <span class="cat-pill">Meals</span>
+                            <span class="cat-pill">Drinks</span>
+                            <span class="cat-pill">Snacks</span>
+                        </div>
+                    </div>
+                    <div class="add-cat-inline">
+                        <input type="text" placeholder="New category">
+                        <button class="btn-outline">Add category</button>
+                    </div>
+                </div>
+
+                <!-- Menu Catalog Grid -->
+                <div class="catalog-grid">
+                    <!-- Catalog Item 1 -->
+                    <div class="catalog-card">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300" alt="Chicken Teriyaki Bowl">
+                        <div class="catalog-info">
+                            <span class="section-tag">MEALS</span>
+                            <h4>Chicken Teriyaki Bowl</h4>
+                            <p class="price">₱145</p>
+                            <div class="card-btn-row">
+                                <button class="btn-sm-edit" data-item="Chicken Teriyaki Bowl">Edit</button>
+                                <button class="btn-sm-delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Catalog Item 2 -->
+                    <div class="catalog-card">
+                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=300" alt="Caramel Iced Latte">
+                        <div class="catalog-info">
+                            <span class="section-tag">DRINKS</span>
+                            <h4>Caramel Iced Latte</h4>
+                            <p class="price">₱95</p>
+                            <div class="card-btn-row">
+                                <button class="btn-sm-edit" data-item="Caramel Iced Latte">Edit</button>
+                                <button class="btn-sm-delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Catalog Item 3 -->
+                    <div class="catalog-card">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=300" alt="Chocolate Croissant">
+                        <div class="catalog-info">
+                            <span class="section-tag">SNACKS</span>
+                            <h4>Chocolate Croissant</h4>
+                            <p class="price">₱75</p>
+                            <div class="card-btn-row">
+                                <button class="btn-sm-edit" data-item="Chocolate Croissant">Edit</button>
+                                <button class="btn-sm-delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 4: PROFILE SETTINGS ================= -->
+            <section id="viewProfileSettings" class="content-view">
+                <div class="view-header-row">
+                    <div>
+                        <span class="section-tag">STAFF ACCOUNT</span>
+                        <h1 class="view-title">Profile settings</h1>
+                        <p class="view-subtext">Manage your profile, preferences, and staff session.</p>
+                    </div>
+                </div>
+
+                <!-- Settings Segmented Tabs -->
+                <div class="settings-tab-bar">
+                    <button class="settings-tab-btn active" data-tab="staffProfile">
+                        <i data-lucide="user"></i> Profile
+                    </button>
+                    <button class="settings-tab-btn" data-tab="staffPreferences">
+                        <i data-lucide="sliders"></i> Preferences
+                    </button>
+                    <button class="settings-tab-btn" data-tab="staffSecurity">
+                        <i data-lucide="lock"></i> Security
+                    </button>
+                </div>
+
+                <!-- Tab 1: Profile -->
+                <div id="staffProfile" class="settings-pane active">
+                    <div class="profile-banner-card">
+                        <div class="banner-green-header">
+                            <span class="section-tag yellow">CAFÉ TEAM</span>
+                            <h2>Your staff profile</h2>
+                        </div>
+                        <div class="profile-body">
+                            <div class="avatar-box">
+                                <div class="avatar-large">MS</div>
+                                <button class="btn-photo-overlay">Change photo</button>
+                            </div>
+                            <div class="profile-meta-tags">
+                                <span class="tag-badge">Active staff</span>
+                                <span class="tag-badge gold">Canteen</span>
+                            </div>
+
+                            <form class="staff-form" onsubmit="event.preventDefault();">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Full name</label>
+                                        <input type="text" value="Maria Santos">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email address</label>
+                                        <input type="email" value="maria.santos@sti.edu.ph">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Staff ID</label>
+                                        <input type="text" value="STF-2048" disabled class="disabled-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Role</label>
+                                        <input type="text" value="Canteen Staff" disabled class="disabled-input">
+                                    </div>
+                                </div>
+                                <div class="form-footer">
+                                    <button class="btn-solid-dark">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Preferences -->
+                <div id="staffPreferences" class="settings-pane">
+                    <div class="settings-grid-two">
+                        <div class="settings-card">
+                            <div class="card-icon-avatar"><i data-lucide="file-text"></i></div>
+                            <span class="section-tag">LANGUAGE</span>
+                            <h3>Portal language</h3>
+                            <p class="card-sub-desc">Choose the language used across your staff workspace.</p>
+                            <select class="custom-select">
+                                <option>English</option>
+                                <option>Filipino</option>
+                            </select>
+                        </div>
+
+                        <div class="settings-card">
+                            <div class="card-icon-avatar gold-bg"><i data-lucide="moon"></i></div>
+                            <span class="section-tag">APPEARANCE</span>
+                            <h3>Display mode</h3>
+                            <p class="card-sub-desc">Pick the appearance that is most comfortable during your shift.</p>
+                            <div class="toggle-mode-group">
+                                <button class="mode-btn active">Light mode</button>
+                                <button class="mode-btn">Dark mode</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Security -->
+                <div id="staffSecurity" class="settings-pane">
+                    <div class="settings-card mb-20">
+                        <div class="security-row">
+                            <div class="security-info">
+                                <div class="icon-sq-avatar"><i data-lucide="lock"></i></div>
+                                <div>
+                                    <h4>Staff sign-in</h4>
+                                    <p>Staff ID and password • STF-2048</p>
+                                </div>
+                            </div>
+                            <span class="badge-protected">Authorized</span>
+                        </div>
+                        <hr class="divider">
+                        <div class="security-row">
+                            <div>
+                                <h4>Current shift session</h4>
+                                <p class="text-sm-muted">Café workstation • Active now</p>
+                            </div>
+                            <span class="status-dot-active">• Active</span>
+                        </div>
+                    </div>
+
+                    <div class="logout-card">
+                        <div>
+                            <h4>End your staff session</h4>
+                            <p>Log out when your café shift is complete.</p>
+                        </div>
+                        <button class="btn-danger">Log out</button>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL 1: EDIT ITEM -->
+    <div id="editItemModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <span class="section-tag">MENU ITEM</span>
+                    <h2>Edit item</h2>
+                </div>
+                <button class="btn-close-modal" id="btnCloseEditModal"><i data-lucide="x"></i></button>
+            </div>
+            <form onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label>Photo</label>
+                    <div class="modal-image-preview">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600" alt="Item preview">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label>Item name</label>
+                        <input type="text" value="Chicken Teriyaki Bowl">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label>Price</label>
+                        <input type="text" value="145">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="custom-select">
+                        <option>Meals</option>
+                        <option>Drinks</option>
+                        <option>Snacks</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="custom-textarea">Glazed chicken, steamed rice, egg, and fresh vegetables</textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-outline" id="btnCancelEdit">Cancel</button>
+                    <button type="submit" class="btn-solid-dark">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: ADD NEW ITEM -->
+    <div id="addItemModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <span class="section-tag">MENU ITEM</span>
+                    <h2>Add new item</h2>
+                </div>
+                <button class="btn-close-modal" id="btnCloseAddModal"><i data-lucide="x"></i></button>
+            </div>
+            <form onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label>Photo</label>
+                    <div class="upload-dropzone">
+                        <i data-lucide="image"></i>
+                        <span>Upload food photo</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label>Item name</label>
+                        <input type="text" placeholder="e.g. Tuna Sandwich">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label>Price</label>
+                        <input type="text" placeholder="₱ 0.00">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="custom-select">
+                        <option>Meals</option>
+                        <option>Drinks</option>
+                        <option>Snacks</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="custom-textarea" placeholder="Describe the item"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-outline" id="btnCancelAdd">Cancel</button>
+                    <button type="submit" class="btn-solid-dark">Add to menu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Student Note: Script initialization -->
+    <script>lucide.createIcons();</script>
+    <script src="StaffPage.js"></script>
+</body>
+</html>

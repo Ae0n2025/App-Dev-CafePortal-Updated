@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Portal - STI College Global City</title>
+    <!-- Student Note: Linking Google Fonts (Inter for UI, Playfair Display for headers) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- Lucide icons CDN for UI icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="LoginPage.css">
+</head>
+<body>
+
+    <!-- Student Comment: Main split layout shell -->
+    <div class="portal-wrapper">
+        
+        <!-- LEFT PANEL: Dark green background with text overlays and background image -->
+        <aside class="left-panel">
+            <div class="panel-overlay"></div>
+            
+            <div class="left-content">
+                <!-- Top Brand Header -->
+                <header class="brand-header">
+                    <div class="logo-box">
+                        <i data-lucide="coffee"></i>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-title">Café Portal</span>
+                        <span class="brand-subtitle">STI GLOBAL CITY</span>
+                    </div>
+                </header>
+
+                <!-- Middle Hero Text Section -->
+                <div class="hero-section">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        CAMPUS DINING, MADE SIMPLE
+                    </div>
+                    <h1 class="hero-title">Good food,<br>less waiting.</h1>
+                    <p class="hero-description">
+                        Order ahead, pay securely, and pick up when it is ready—your campus break, back in your hands.
+                    </p>
+                </div>
+
+                <!-- Left Panel Footer Text -->
+                <footer class="left-footer">
+                    Secure access for students, faculty, and cafe staff.
+                </footer>
+            </div>
+        </aside>
+
+        <!-- RIGHT PANEL: Light background container holding the dynamic login card -->
+        <main class="right-panel">
+            <div class="login-container">
+                
+                <!-- Main Form Header -->
+                <div class="login-header">
+                    <span class="welcome-label">WELCOME BACK</span>
+                    <h2 class="main-heading">Sign in to your portal</h2>
+                    <p class="sub-heading">Choose your account type to continue.</p>
+                </div>
+
+                <!-- Primary Switcher (Customer vs Staff) -->
+                <div class="segmented-control main-switch">
+                    <button id="btnCustomerRole" class="tab-btn active">Customer</button>
+                    <button id="btnStaffRole" class="tab-btn">Staff</button>
+                </div>
+
+                <!-- CARD 1: CUSTOMER PORTAL -->
+                <div id="customerCard" class="portal-card">
+                    
+                    <div class="card-header-row">
+                        <div class="icon-avatar">
+                            <i data-lucide="user-cog"></i>
+                        </div>
+                        <div class="card-header-text">
+                            <h3>Students & faculty</h3>
+                            <p>Choose how you want to access the customer portal.</p>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Switcher (Microsoft 365 vs ID & Password) -->
+                    <div class="segmented-control sub-switch">
+                        <button id="btnM365Option" class="sub-tab-btn active">Microsoft 365</button>
+                        <button id="btnIdPassOption" class="sub-tab-btn">ID & Password</button>
+                    </div>
+
+                    <!-- Customer Option A: Microsoft 365 View (Default) -->
+                    <div id="m365View" class="auth-view active">
+                        <p class="auth-desc">
+                            Use your official STI Microsoft 365 account to securely access the menu and your orders.
+                        </p>
+                        <button class="btn-microsoft">
+                            <!-- Custom 4-color Microsoft logo -->
+                            <svg class="ms-logo" viewBox="0 0 21 21" width="18" height="18">
+                                <path fill="#f25022" d="M1 1h9v9H1z"/>
+                                <path fill="#7fba00" d="M11 1h9v9h-9z"/>
+                                <path fill="#00a4ef" d="M1 11h9v9H1z"/>
+                                <path fill="#ffb900" d="M11 11h9v9h-9z"/>
+                            </svg>
+                            Continue with Microsoft 365
+                        </button>
+                    </div>
+
+                    <!-- Customer Option B: Student ID & Password View -->
+                    <div id="idPassView" class="auth-view">
+                        <form onsubmit="event.preventDefault();">
+                            <div class="form-group">
+                                <label for="studentId">Student ID</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="id-card" class="input-icon"></i>
+                                    <input type="text" id="studentId" value="STI-2027-001" placeholder="Enter your Student ID">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-row">
+                                    <label for="studentPass">Password</label>
+                                    <a href="#" class="link-forgot">Forgot password?</a>
+                                </div>
+                                <div class="input-wrapper">
+                                    <i data-lucide="lock" class="input-icon"></i>
+                                    <input type="password" id="studentPass" value="password123" placeholder="Enter your password">
+                                    <i data-lucide="eye" class="eye-icon toggle-password"></i>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-primary">Sign in to customer portal</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- CARD 2: STAFF PORTAL -->
+                <div id="staffCard" class="portal-card" style="display: none;">
+                    <form onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label for="staffId">Staff ID</label>
+                            <div class="input-wrapper">
+                                <i data-lucide="id-card" class="input-icon"></i>
+                                <input type="text" id="staffId" value="STF-2048" placeholder="Enter your Staff ID">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-row">
+                                <label for="staffPass">Password</label>
+                                <a href="#" class="link-forgot">Forgot password?</a>
+                            </div>
+                            <div class="input-wrapper">
+                                <i data-lucide="lock" class="input-icon"></i>
+                                <input type="password" id="staffPass" value="password123" placeholder="Enter your password">
+                                <i data-lucide="eye" class="eye-icon toggle-password"></i>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">Sign in to staff portal</button>
+                    </form>
+                </div>
+
+                <!-- Footer Disclaimers -->
+                <footer class="right-footer">
+                    <p id="footerDynamicNote" class="redirect-info">
+                        You will be redirected to Microsoft to verify your school account.
+                    </p>
+                    <p class="copyright-info">© 2027 Café Portal • STI College Global City</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Student Note: Initialize Lucide icons and handle interface script -->
+    <script>lucide.createIcons();</script>
+    <script src="LoginPage.js"></script>
+</body>
+</html>

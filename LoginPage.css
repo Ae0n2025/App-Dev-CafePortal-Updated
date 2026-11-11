@@ -1,0 +1,447 @@
+/* Student Note: Global CSS setup with variables for UI consistency */
+:root {
+    --bg-dark-green: #072a1e;
+    --brand-accent-gold: #e28704;
+    --brand-accent-yellow: #f1b333;
+    --text-muted-green: #90a79d;
+    --bg-light-page: #f9f9f6;
+    --card-bg: #ffffff;
+    --text-primary: #1c2024;
+    --text-secondary: #60646c;
+    --input-border: #e2e8f0;
+    --btn-dark-green: #0b3b2b;
+    --btn-dark-hover: #07251b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light-page);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Student Comment: Split layout wrapper dividing viewport 50/50 */
+.portal-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/* ================= LEFT PANEL STYLES ================= */
+.left-panel {
+    flex: 1;
+    background-color: var(--bg-dark-green);
+    /* Student Note: Subtle coffee background texture */
+    background-image: radial-gradient(circle at 50% 50%, rgba(20, 60, 45, 0.4) 0%, rgba(7, 42, 30, 0.95) 100%),
+                      url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1000');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 48px;
+}
+
+.left-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Brand logo top-left */
+.brand-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-box {
+    width: 38px;
+    height: 38px;
+    background-color: var(--brand-accent-yellow);
+    color: var(--bg-dark-green);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-box svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.5;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.brand-subtitle {
+    color: var(--text-muted-green);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+}
+
+/* Hero Typography */
+.hero-section {
+    max-width: 440px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--brand-accent-gold);
+    border-radius: 50%;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--brand-accent-yellow);
+    font-size: 52px;
+    line-height: 1.08;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.left-footer {
+    color: var(--text-muted-green);
+    font-size: 12px;
+}
+
+/* ================= RIGHT PANEL STYLES ================= */
+.right-panel {
+    flex: 1;
+    background-color: var(--bg-light-page);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 410px;
+}
+
+.login-header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.welcome-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--brand-accent-gold);
+    letter-spacing: 0.8px;
+}
+
+.main-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #111827;
+    margin: 4px 0 6px 0;
+}
+
+.sub-heading {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Segmented Control Switcher */
+.segmented-control {
+    display: flex;
+    background-color: #eef0eb;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.main-switch {
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    background-color: #ffffff;
+    color: var(--text-primary);
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Cards */
+.portal-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    margin-bottom: 24px;
+}
+
+.card-header-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.icon-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4b5563;
+    flex-shrink: 0;
+}
+
+.icon-avatar svg {
+    width: 18px;
+    height: 18px;
+}
+
+.card-header-text h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.card-header-text p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+.sub-switch {
+    margin-bottom: 20px;
+    background-color: #f3f4f6;
+}
+
+.sub-tab-btn {
+    flex: 1;
+    padding: 8px 0;
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.sub-tab-btn.active {
+    background-color: #ffffff;
+    color: #111827;
+    font-weight: 600;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+/* Views Visibility */
+.auth-view {
+    display: none;
+}
+
+.auth-view.active {
+    display: block;
+}
+
+.auth-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Form controls */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.link-forgot {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.link-forgot:hover {
+    text-decoration: underline;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    width: 16px;
+    height: 16px;
+    color: #9ca3af;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 14px;
+    width: 16px;
+    height: 16px;
+    color: #9ca3af;
+    cursor: pointer;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 10px 38px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #111827;
+    background-color: #fafafa;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.input-wrapper input:focus {
+    background-color: #ffffff;
+    border-color: var(--btn-dark-green);
+    box-shadow: 0 0 0 3px rgba(11, 59, 43, 0.1);
+}
+
+/* Buttons */
+.btn-microsoft {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-microsoft:hover {
+    background-color: #f9fafb;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 11px;
+    background-color: var(--btn-dark-green);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-dark-hover);
+}
+
+/* Right Pane Footer */
+.right-footer {
+    text-align: center;
+}
+
+.redirect-info {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.copyright-info {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+/* Responsive breakpoint for smaller displays */
+@media (max-width: 850px) {
+    .portal-wrapper {
+        flex-direction: column;
+    }
+    .left-panel {
+        min-height: 280px;
+        padding: 30px;
+    }
+    .hero-title {
+        font-size: 36px;
+    }
+}

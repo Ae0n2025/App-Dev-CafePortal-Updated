@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Portal - STI College Global City</title>
+    <!-- Student Note: Importing exact typography fonts and Lucide vector icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="CustomerPage.css">
+</head>
+<body>
+
+    <!-- Student Comment: Top persistent Header Navigation Bar -->
+    <header class="top-nav">
+        <div class="nav-brand">
+            <div class="logo-box">
+                <i data-lucide="coffee"></i>
+            </div>
+            <div class="brand-text">
+                <span class="brand-title">Café Portal</span>
+                <span class="brand-subtitle">STI GLOBAL CITY</span>
+            </div>
+        </div>
+
+        <div class="nav-user-actions">
+            <!-- Shopping Cart Quick Access Button -->
+            <button class="btn-cart-nav" id="openCartBtn">
+                <i data-lucide="shopping-cart"></i>
+                <span class="cart-count-badge" id="navCartCount">0</span>
+            </button>
+
+            <!-- Student Profile Badge -->
+            <div class="user-profile-badge">
+                <span class="user-name js-user-name">Alex Rivera</span>
+                <span class="user-role">Student • 2027</span>
+            </div>
+
+            <!-- Logout action button -->
+            <button class="btn-logout" id="headerLogoutBtn" title="Sign out" type="button">
+                <i data-lucide="log-out"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Student Comment: Main Layout splitting Sidebar and Main Dynamic View Area -->
+    <div class="app-container">
+        
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="sidebar">
+            <!-- Active User Card Avatar -->
+            <div class="user-card">
+                <div class="avatar-circle">AR</div>
+                <div class="user-info">
+                    <h4 class="js-user-name">Alex Rivera</h4>
+                    <p>Student • 2027</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="sidebar-nav">
+                <button class="nav-link active" data-view="viewHome">
+                    <i data-lucide="home"></i> Home
+                </button>
+                <button class="nav-link" data-view="viewOrderHistory">
+                    <i data-lucide="history"></i> Order History
+                </button>
+                <button class="nav-link" data-view="viewOrderTracking">
+                    <i data-lucide="receipt"></i> Order Tracking
+                </button>
+                <button class="nav-link" data-view="viewSettings">
+                    <i data-lucide="settings"></i> Settings
+                </button>
+            </nav>
+        </aside>
+
+        <!-- DYNAMIC MAIN CONTENT PANEL -->
+        <main class="main-content">
+
+            <!-- ================= VIEW 1: HOME MENU ================= -->
+            <section id="viewHome" class="content-view active">
+                <!-- Banner Box -->
+                <div class="hero-banner">
+                    <span class="greeting-tag" id="greetingTag">GOOD MORNING, ALEX</span>
+                    <h1 class="hero-heading">What are you craving today?</h1>
+                    <p class="hero-subtext">Freshly prepared on campus. Order now and skip the line.</p>
+                    
+                    <div class="search-bar">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="menuSearchInput" placeholder="Search meals, drinks, and snacks">
+                    </div>
+                </div>
+
+                <!-- Today's Menu Section -->
+                <div class="menu-section">
+                    <div class="section-header">
+                        <div>
+                            <span class="section-tag">TODAY'S MENU</span>
+                            <h2 class="section-title">Popular on campus</h2>
+                        </div>
+
+                        <!-- Menu Category Filter Pills -->
+                        <div class="category-filters">
+                            <button class="filter-pill active" data-category="all">All items</button>
+                            <button class="filter-pill" data-category="meals">Meals</button>
+                            <button class="filter-pill" data-category="drinks">Drinks</button>
+                            <button class="filter-pill" data-category="snacks">Snacks</button>
+                        </div>
+                    </div>
+
+                    <!-- Items Grid -->
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Item 1: Chicken Teriyaki Bowl -->
+                        <div class="product-card" data-category="meals" data-product-id="chicken-teriyaki-bowl">
+                            <div class="card-image-wrap">
+                                <span class="most-ordered-badge"><i data-lucide="star"></i> MOST ORDERED</span>
+                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600" alt="Chicken Teriyaki Bowl">
+                                <span class="price-tag">₱145</span>
+                            </div>
+                            <div class="card-details">
+                                <div class="card-title-row">
+                                    <h3>Chicken Teriyaki Bowl</h3>
+                                    <button class="btn-add-item" data-product-id="chicken-teriyaki-bowl" data-name="Chicken Teriyaki Bowl" data-price="145" aria-label="Add Chicken Teriyaki Bowl to cart">+</button>
+                                </div>
+                                <p class="card-desc">Glazed chicken, steamed rice, egg, and fresh vegetables.</p>
+                                <a href="#" class="view-details-link">View item details</a>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Caramel Iced Latte -->
+                        <div class="product-card" data-category="drinks" data-product-id="caramel-iced-latte">
+                            <div class="card-image-wrap">
+                                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600" alt="Caramel Iced Latte">
+                                <span class="price-tag">₱95</span>
+                            </div>
+                            <div class="card-details">
+                                <div class="card-title-row">
+                                    <h3>Caramel Iced Latte</h3>
+                                    <button class="btn-add-item" data-product-id="caramel-iced-latte" data-name="Caramel Iced Latte" data-price="95" aria-label="Add Caramel Iced Latte to cart">+</button>
+                                </div>
+                                <p class="card-desc">Espresso, creamy milk, caramel, and ice.</p>
+                                <a href="#" class="view-details-link">View item details</a>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Chocolate Croissant -->
+                        <div class="product-card" data-category="snacks" data-product-id="chocolate-croissant">
+                            <div class="card-image-wrap">
+                                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600" alt="Chocolate Croissant">
+                                <span class="price-tag">₱75</span>
+                            </div>
+                            <div class="card-details">
+                                <div class="card-title-row">
+                                    <h3>Chocolate Croissant</h3>
+                                    <button class="btn-add-item" data-product-id="chocolate-croissant" data-name="Chocolate Croissant" data-price="75" aria-label="Add Chocolate Croissant to cart">+</button>
+                                </div>
+                                <p class="card-desc">Buttery pastry with a rich chocolate center.</p>
+                                <a href="#" class="view-details-link">View item details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="empty-menu-message" id="emptyMenuMessage" hidden>No menu items match your search.</p>
+                    <p class="footnote"><i data-lucide="star"></i> The Most Ordered badge updates automatically from live sales data.</p>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 2: ORDER HISTORY ================= -->
+            <section id="viewOrderHistory" class="content-view">
+                <div class="view-header">
+                    <span class="section-tag">ORDER HISTORY</span>
+                    <div class="title-with-badge">
+                        <h2 class="view-title">Your order history</h2>
+                        <span class="count-pill" id="orderCount">0 ORDERS</span>
+                    </div>
+                    <p class="view-subtext">Select an order to view its complete information.</p>
+                </div>
+
+                <div class="data-table-card">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>ORDER NUMBER</th>
+                                <th>ITEMS</th>
+                                <th>TIME</th>
+                                <th>STATUS</th>
+                                <th>INFORMATION</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderHistoryBody"></tbody>
+                    </table>
+                    <p class="empty-orders-message" id="emptyHistoryMessage">No orders yet. Place an order from today's menu to see it here.</p>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 3: ORDER TRACKING ================= -->
+            <section id="viewOrderTracking" class="content-view">
+                <div class="view-header">
+                    <span class="section-tag">ORDER TRACKING</span>
+                    <h2 class="view-title">Your orders</h2>
+                    <p class="alert-warning-text"><i data-lucide="alert-triangle"></i> Orders cannot be cancelled once the café starts preparing the food.</p>
+                </div>
+
+                <div class="tracking-orders" id="trackingOrders"></div>
+                <div class="empty-state-box" id="emptyTrackingMessage">
+                    <p>You have no active orders right now.</p>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 4: SETTINGS & PROFILE ================= -->
+            <section id="viewSettings" class="content-view">
+                <div class="view-header">
+                    <span class="section-tag">YOUR ACCOUNT</span>
+                    <h2 class="view-title">Profile & settings</h2>
+                    <p class="view-subtext">Manage your personal details, preferences, and account session.</p>
+                </div>
+
+                <!-- Settings Tabs Navigation Bar -->
+                <div class="settings-tab-bar">
+                    <button class="settings-tab-btn active" data-settings-tab="tabProfile">
+                        <i data-lucide="user"></i> Profile
+                    </button>
+                    <button class="settings-tab-btn" data-settings-tab="tabPreferences">
+                        <i data-lucide="sliders"></i> Preferences
+                    </button>
+                    <button class="settings-tab-btn" data-settings-tab="tabSecurity">
+                        <i data-lucide="lock"></i> Security
+                    </button>
+                </div>
+
+                <!-- Settings Tab 1: Profile View -->
+                <div id="tabProfile" class="settings-pane active">
+                    <div class="settings-card">
+                        <div class="profile-header-group">
+                            <div class="avatar-large-container">
+                                <div class="avatar-large" id="profileAvatar">AR</div>
+                                <button class="btn-change-photo" id="changePhotoBtn" type="button">Change photo</button>
+                                <input id="profilePhotoInput" type="file" accept="image/*" hidden>
+                            </div>
+                            <div class="profile-text-meta">
+                                <span class="section-tag">PROFILE</span>
+                                <h3>Personal information</h3>
+                                <p>Update the name and photo shown across your account.</p>
+                            </div>
+                        </div>
+
+                        <form class="settings-form" id="profileForm">
+                            <div class="form-row">
+                                <div class="form-group flex-1">
+                                    <label for="profileName">Full name</label>
+                                    <input id="profileName" name="fullName" type="text" value="Alex Rivera" required maxlength="100">
+                                </div>
+                                <div class="form-group flex-1">
+                                    <label for="profileEmail">Email address</label>
+                                    <input id="profileEmail" name="email" type="email" value="alex.rivera@sti.edu.ph">
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary-dark">Save profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Settings Tab 2: Preferences View -->
+                <div id="tabPreferences" class="settings-pane">
+                    <div class="settings-grid-two">
+                        <!-- Language Card -->
+                        <div class="settings-card">
+                            <span class="section-tag">LANGUAGE</span>
+                            <h3>Portal language</h3>
+                            <p class="card-sub-desc">Choose the language you prefer for the portal interface.</p>
+                            
+                            <select class="custom-select" id="languageSelect">
+                                <option value="en">English</option>
+                                <option value="fil">Filipino</option>
+                            </select>
+                        </div>
+
+                        <!-- Dark Mode Card -->
+                        <div class="settings-card">
+                            <span class="section-tag">APPEARANCE</span>
+                            <h3>Dark mode</h3>
+                            <p class="card-sub-desc">Switch between light and dark appearances.</p>
+                            
+                            <div class="toggle-mode-group">
+                                <button class="mode-btn active" id="btnLightMode">Light mode</button>
+                                <button class="mode-btn" id="btnDarkMode">Dark mode</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab 3: Security View -->
+                <div id="tabSecurity" class="settings-pane">
+                    <div class="settings-card mb-20">
+                        <div class="security-row">
+                            <div class="security-info">
+                                <div class="icon-sq-avatar"><i data-lucide="lock"></i></div>
+                                <div>
+                                    <h4>Sign-in method</h4>
+                                    <p>Student ID and password • STI-2027-001</p>
+                                </div>
+                            </div>
+                            <span class="badge-protected">Protected</span>
+                        </div>
+
+                        <hr class="divider">
+
+                        <div class="security-row">
+                            <div>
+                                <h4>Current session</h4>
+                                <p class="text-sm-muted">This device • Active now</p>
+                            </div>
+                            <span class="status-dot-active">• Active</span>
+                        </div>
+                    </div>
+
+                    <!-- Logout Warning Card -->
+                    <div class="logout-card">
+                        <div>
+                            <h4>Log out of your account</h4>
+                            <p>You will return to the Café Portal sign-in screen.</p>
+                        </div>
+                        <button class="btn-danger" id="settingsLogoutBtn" type="button">Log out</button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ================= VIEW 5: CHECKOUT / CART ================= -->
+            <section id="viewCheckout" class="content-view">
+                <div class="checkout-header">
+                    <button class="btn-back" id="backToMenuBtn"><i data-lucide="chevron-left"></i></button>
+                    <div>
+                        <span class="section-tag">CHECKOUT</span>
+                        <h2 class="view-title">Review your order</h2>
+                    </div>
+                </div>
+
+                <div class="checkout-layout">
+                    <!-- Left: Cart Items -->
+                    <div class="cart-items-column">
+                        <span class="section-tag">YOUR CART</span>
+                        <h3 class="subsection-title">Item details</h3>
+
+                        <div id="emptyCartBox" class="empty-cart-container">
+                            <div class="cart-icon-circle"><i data-lucide="shopping-cart"></i></div>
+                            <h3>Your cart is empty</h3>
+                            <button class="btn-text-link" id="btnReturnMenu">Return to the menu</button>
+                        </div>
+
+                        <div id="filledCartItems" class="cart-items-list" hidden>
+                            <!-- Dynamically injected items will appear here -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Payment Methods Selection -->
+                    <div class="payment-column">
+                        <div class="payment-card">
+                            <span class="section-tag">PAYMENT</span>
+                            <h3 class="subsection-title">Choose how to pay</h3>
+                            <p class="payment-sub">Select one payment method for this order.</p>
+
+                            <div class="payment-methods-grid">
+                                <label class="payment-option active">
+                                    <input type="radio" name="payment" value="cash" checked>
+                                    <div class="option-content">
+                                        <div class="option-title">
+                                            <strong>Cash</strong>
+                                            <i data-lucide="check-circle-2" class="check-icon"></i>
+                                        </div>
+                                        <p>Pay at the café cashier</p>
+                                    </div>
+                                </label>
+
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="gcash">
+                                    <div class="option-content">
+                                        <div class="option-title">
+                                            <strong>GCash</strong>
+                                            <span class="radio-circle"></span>
+                                        </div>
+                                        <p>Pay using your GCash wallet</p>
+                                    </div>
+                                </label>
+
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="maya">
+                                    <div class="option-content">
+                                        <div class="option-title">
+                                            <strong>Maya</strong>
+                                            <span class="radio-circle"></span>
+                                        </div>
+                                        <p>Pay using your Maya wallet</p>
+                                    </div>
+                                </label>
+
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="bank">
+                                    <div class="option-content">
+                                        <div class="option-title">
+                                            <strong>Bank transfer</strong>
+                                            <span class="radio-circle"></span>
+                                        </div>
+                                        <p>Send payment from your bank</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Cost Breakdown -->
+                            <div class="price-breakdown">
+                                <div class="price-row">
+                                    <span>Items (<span id="checkoutItemCount">0</span>)</span>
+                                    <span id="checkoutSubtotal">₱0</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Service fee</span>
+                                    <span class="text-green-bold">Free</span>
+                                </div>
+                                <div class="price-row total-row">
+                                    <strong>Order total</strong>
+                                    <strong class="total-price" id="checkoutTotal">₱0</strong>
+                                </div>
+                            </div>
+
+                            <button class="btn-place-order" id="placeOrderBtn" disabled>Place order <i data-lucide="chevron-right"></i></button>
+
+                            <p class="secure-note"><i data-lucide="lock"></i> Payment details are used only to review this checkout.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <dialog id="productDetailsDialog" class="product-details-dialog">
+        <form method="dialog" class="dialog-close-form">
+            <button class="dialog-close" aria-label="Close item details">×</button>
+        </form>
+        <img id="detailsImage" alt="">
+        <span class="section-tag" id="detailsCategory"></span>
+        <h2 id="detailsName"></h2>
+        <p id="detailsDescription"></p>
+        <div class="dialog-footer">
+            <strong id="detailsPrice"></strong>
+            <button class="btn-primary-dark" id="detailsAddButton" type="button">Add to cart</button>
+        </div>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="CustomerPageBackend.js"></script>
+    <script src="CustomerPage.js"></script>
+</body>
+</html>
