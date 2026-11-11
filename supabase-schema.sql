@@ -1,6 +1,6 @@
 -- Run this file in the Supabase SQL Editor before connecting the customer page.
--- Customer sessions use Supabase Anonymous Sign-Ins; enable this in
--- Authentication > Sign In / Providers > Anonymous Sign-Ins.
+-- Customers sign in with Supabase email/password. Staff access is granted by
+-- adding approved auth user IDs to public.staff_members.
 
 create table if not exists public.profiles (
     id uuid primary key references auth.users(id) on delete cascade,
@@ -9,6 +9,11 @@ create table if not exists public.profiles (
     language text not null default 'en' check (language in ('en', 'fil')),
     dark_mode boolean not null default false,
     updated_at timestamptz not null default now()
+);
+
+create table if not exists public.staff_members (
+    user_id uuid primary key references auth.users(id) on delete cascade,
+    created_at timestamptz not null default now()
 );
 
 create table if not exists public.menu_items (
@@ -50,8 +55,12 @@ security definer
 set search_path = ''
 as $$
 begin
-    insert into public.profiles (id, email)
-    values (new.id, new.email)
+    insert into public.profiles (id, email, full_name)
+    values (
+        new.id,
+        new.email,
+        coalesce(nullif(new.raw_user_meta_data ->> 'full_name', ''), 'Alex Rivera')
+    )
     on conflict (id) do nothing;
     return new;
 end;
@@ -63,6 +72,7 @@ create trigger on_customer_auth_user_created
     for each row execute function public.create_customer_profile();
 
 alter table public.profiles enable row level security;
+alter table public.staff_members enable row level security;
 alter table public.menu_items enable row level security;
 alter table public.orders enable row level security;
 alter table public.order_items enable row level security;
@@ -80,6 +90,11 @@ create policy "Customers can update their profile"
     on public.profiles for update to authenticated
     using ((select auth.uid()) = id)
     with check ((select auth.uid()) = id);
+
+drop policy if exists "Staff can read own membership" on public.staff_members;
+create policy "Staff can read own membership"
+    on public.staff_members for select to authenticated
+    using ((select auth.uid()) = user_id);
 
 drop policy if exists "Anyone can read available menu items" on public.menu_items;
 create policy "Anyone can read available menu items"
@@ -105,6 +120,7 @@ create policy "Customers can read their order items"
 
 grant select on public.menu_items to anon, authenticated;
 grant select, insert, update on public.profiles to authenticated;
+grant select on public.staff_members to authenticated;
 grant select on public.orders, public.order_items to authenticated;
 
 create or replace function public.place_customer_order(
